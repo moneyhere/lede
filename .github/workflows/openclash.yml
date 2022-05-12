@@ -11,8 +11,8 @@ name: OpenWrt-CI
 
 on:
   push:
-    branches: 
-      - master
+    branches:
+      - openclash
   # schedule:
   #   - cron: 0 20 * * *
   release:
@@ -76,46 +76,12 @@ jobs:
 
           CONFIG_PACKAGE_luci-app-openclash=y
 
-          CONFIG_PACKAGE_luci-app-accesscontrol=n
-          CONFIG_PACKAGE_luci-app-adbyby-plus=n
-          CONFIG_PACKAGE_luci-app-arpbind=n
-          CONFIG_PACKAGE_luci-app-ddns=n
-          CONFIG_PACKAGE_luci-app-diskman_INCLUDE_btrfs_progs=n
-          CONFIG_PACKAGE_luci-app-nlbwmon=n
-          CONFIG_PACKAGE_luci-app-qbittorrent_dynamic=n
-          CONFIG_PACKAGE_luci-app-rclone_INCLUDE_rclone-webui=n
-          CONFIG_PACKAGE_luci-app-rclone_INCLUDE_rclone-ng=n
-          CONFIG_PACKAGE_luci-app-turboacc=n
-
-          CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_OFFLOADING=n
-          CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_BBR_CCA=n
-          CONFIG_PACKAGE_luci-app-unblockmusic=n
-          CONFIG_PACKAGE_luci-app-vsftpd=n
-          CONFIG_PACKAGE_luci-app-wol=n
-          CONFIG_PACKAGE_luci-i18n-accesscontrol-zh-cn=n
-          CONFIG_PACKAGE_luci-i18n-adbyby-plus-zh-cn=n
-          CONFIG_PACKAGE_luci-i18n-arpbind-zh-cn=n
-          CONFIG_PACKAGE_luci-i18n-ddns-zh-cn=n
-          CONFIG_PACKAGE_luci-i18n-filetransfer-zh-cn=n
-          CONFIG_PACKAGE_luci-i18n-nlbwmon-zh-cn=n
-          CONFIG_PACKAGE_luci-i18n-ramfree-zh-cn=n
-          CONFIG_PACKAGE_luci-i18n-turboacc-zh-cn=n
-          CONFIG_PACKAGE_luci-i18n-unblockmusic-zh-cn=n
-          CONFIG_PACKAGE_luci-i18n-vlmcsd-zh-cn=n
-          CONFIG_PACKAGE_luci-i18n-vsftpd-zh-cn=n
-          CONFIG_PACKAGE_luci-i18n-wol-zh-cn=n
-          CONFIG_PACKAGE_adbyby=n
-          CONFIG_PACKAGE_nlbwmon=n
-          CONFIG_PACKAGE_wol=n
-
-
           CONFIG_TARGET_ramips=y
           CONFIG_TARGET_ramips_mt76x8=y
           CONFIG_TARGET_ramips_mt76x8_DEVICE_xiaomi_miwifi-nano=y
           CONFIG_TARGET_BOARD="ramips"
           CONFIG_TARGET_SUBTARGET="mt76x8"
 
-          CONFIG_TARGET_IMAGES_GZIP=n
           CONFIG_KERNEL_BUILD_USER="OpenWrt-CI"
           CONFIG_KERNEL_BUILD_DOMAIN="Azure"
           EOF
