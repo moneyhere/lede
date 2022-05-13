@@ -7,7 +7,7 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 
-name: ssr-plus
+name: ssr-plus build
 
 on:
   push:
@@ -72,10 +72,29 @@ jobs:
           # 在 cat >> .config <<EOF 到 EOF 之间粘贴你的编译配置, 需注意缩进关系
           # 例如:
 
+
+          # 设置固件(小米路由器青春版R1CL):
           cat >> .config <<EOF
+          CONFIG_TARGET_ramips=y
+          CONFIG_TARGET_ramips_mt76x8=y
+          CONFIG_TARGET_ramips_mt76x8_DEVICE_xiaomi_miwifi-nano=y
+          CONFIG_TARGET_BOARD="ramips"
+          CONFIG_TARGET_SUBTARGET="mt76x8"
+          EOF
 
+          # 集成ssr-plus:
+          cat >> .config <<EOF
           CONFIG_PACKAGE_luci-app-ssr-plus=y
+          EOF
 
+          # 其他:
+          cat >> .config <<EOF
+          CONFIG_KERNEL_BUILD_USER="OpenWrt-CI"
+          CONFIG_KERNEL_BUILD_DOMAIN="Azure"
+          EOF
+
+          # 瘦身:
+          cat >> .config <<EOF
           CONFIG_PACKAGE_luci-app-accesscontrol=n
           CONFIG_PACKAGE_luci-app-adbyby-plus=n
           CONFIG_PACKAGE_luci-app-arpbind=n
@@ -107,16 +126,6 @@ jobs:
           CONFIG_PACKAGE_adbyby=n
           CONFIG_PACKAGE_nlbwmon=n
           CONFIG_PACKAGE_wol=n
-
-
-          CONFIG_TARGET_ramips=y
-          CONFIG_TARGET_ramips_mt76x8=y
-          CONFIG_TARGET_ramips_mt76x8_DEVICE_xiaomi_miwifi-nano=y
-          CONFIG_TARGET_BOARD="ramips"
-          CONFIG_TARGET_SUBTARGET="mt76x8"
-
-          CONFIG_KERNEL_BUILD_USER="OpenWrt-CI"
-          CONFIG_KERNEL_BUILD_DOMAIN="Azure"
           EOF
 
           #
