@@ -82,6 +82,7 @@ jobs:
           CONFIG_TARGET_BOARD="ramips"
           CONFIG_TARGET_SUBTARGET="mt76x8"
 
+          CONFIG_PACKAGE_wget=y
           CONFIG_PACKAGE_wget-nossl=y
           CONFIG_PACKAGE_wget-ssl=y
 
