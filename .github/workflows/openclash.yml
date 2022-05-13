@@ -72,23 +72,28 @@ jobs:
           # 在 cat >> .config <<EOF 到 EOF 之间粘贴你的编译配置, 需注意缩进关系
           # 例如:
 
+          # 设置固件(小米路由器青春版R1CL):
           cat >> .config <<EOF
-
-          CONFIG_PACKAGE_wget=y
-          CONFIG_PACKAGE_wget-nossl=y
-          CONFIG_PACKAGE_wget-ssl=y
-          CONFIG_PACKAGE_luci-app-openclash=y
-
           CONFIG_TARGET_ramips=y
           CONFIG_TARGET_ramips_mt76x8=y
           CONFIG_TARGET_ramips_mt76x8_DEVICE_xiaomi_miwifi-nano=y
           CONFIG_TARGET_BOARD="ramips"
           CONFIG_TARGET_SUBTARGET="mt76x8"
+          EOF
+
+          # 集成OpenClash:
+          cat >> .config <<EOF
+          CONFIG_PACKAGE_wget=y
+          CONFIG_PACKAGE_luci-app-openclash=y
+          EOF
 
 
+          # 其他:
+          cat >> .config <<EOF
           CONFIG_KERNEL_BUILD_USER="OpenWrt-CI"
           CONFIG_KERNEL_BUILD_DOMAIN="Azure"
           EOF
+
 
           #
           # ===============================================================
